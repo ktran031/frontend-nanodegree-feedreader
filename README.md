@@ -13,7 +13,7 @@ Note: Copyright and license text of third party modules are included in their so
 
 ## How to install this project
 
-1. Perform a git clone: $git clone https://github.com/ktran031/udacity-classic-arcade-game-clone.git
+1. Perform a git clone: $git clone https://github.com/ktran031/khoi-tran-frontend-nanodegree-feedreader.git
 
 2. Get into the cloned folder and start the server for the app: $python -m SimpleHTTPServer
 
