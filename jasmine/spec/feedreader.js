@@ -79,9 +79,6 @@ $(function() {
 		 */
 		it(' menu displays when clicked and hides when clicked again', function() {
 
-			//Prepare for Test
-			expect($('body').hasClass('menu-hidden')).toBe(true);
-
 			// Trigger the click on the menu Button
 			menuIconElement.click();
 
@@ -216,6 +213,28 @@ $(function() {
 		 * from the menu feed list for the test new feed selection.
 		 */
 		let feed_id_test = 1;
+		let feedOne;
+        let feedTwo;
+
+        /* Test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         * Remember, loadFeed() is asynchronous.*/
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                feedOne = $('.feed').html();
+                loadFeed(1, function() {
+                    done();
+                });
+            });
+        });
+
+        it('content changes when new feed is loaded', function() {
+            expect(feedOne).toBeDefined();
+            expect(feedTwo).not.toBeDefined();
+            feedTwo = $('.feed').html();
+            expect(feedTwo).toBeDefined();
+            expect(feedOne).not.toBe(feedTwo);
+        });
 
 
 		/* Test there is more than one feed in the menu feed-list, indicating it is
@@ -255,12 +274,6 @@ $(function() {
 				//Load the second feed with async done callback
 				loadFeed(feed_id_test, done);
 			});
-
-			afterEach(function(done) {
-				//After test, return back to default
-				loadFeed(0, done);
-			});
-
 
 			/* test that ensures when a new feed is loaded
 			 * by the loadFeed function that the content actually changes.

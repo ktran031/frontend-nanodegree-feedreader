@@ -6,12 +6,6 @@
  * jQuery.
  */
 
-"use strict";
-// set jshint to ignore console, alert, etc
-/* jshint devel: true */
-// set jshint to ignore external globals
-/* global $, Handlebars, google : false */
-
 // The names and URLs to all of the feeds we'd like available.
 var allFeeds = [
     {
